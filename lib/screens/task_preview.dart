@@ -13,21 +13,21 @@ class _TaskPreviewState extends State<TaskPreview> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-                  title: Text(widget.task.title!),
-                  subtitle: Text(widget.task.content),
-                  trailing: Checkbox(
-                    value: widget.task.completed,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        widget.task.completed = value!;
-                      });
-                    },
-                    activeColor: Colors.green,
-                    side: const BorderSide(
-                      color: Colors.red,
-                      width: 2.0
-                    )
-                  ),
-                );
+      title: Text(widget.task.title!),
+      subtitle: Text(widget.task.content),
+      trailing: Checkbox(
+        value: widget.task.completed,
+        onChanged: (bool? value) {
+          setState(() {
+            widget.task.completed = value!;
+          });
+        },
+        activeColor: Colors.green,
+        side: const BorderSide(
+          color: Colors.red,
+          width: 2.0
+        )
+      ),
+    );
   }
 }
