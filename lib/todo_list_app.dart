@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list_v1/screens/tasks_master.dart';
+import './screens/tasks_master.dart';
 
 class ToDoListApp extends StatefulWidget {
   const ToDoListApp({super.key});
@@ -19,10 +19,6 @@ class _ToDoListAppState extends State<ToDoListApp> {
         ),
         body: const Center(
           child: TasksMaster(),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.add),
         ),
       ),
     );

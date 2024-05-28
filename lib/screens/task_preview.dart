@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './tasks_details.dart';
 import '../models/task.dart';
 
 class TaskPreview extends StatefulWidget {
@@ -28,6 +29,12 @@ class _TaskPreviewState extends State<TaskPreview> {
           width: 2.0
         )
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const TaskDetails()),
+        );
+      },
     );
   }
 }
