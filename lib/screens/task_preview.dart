@@ -30,10 +30,19 @@ class _TaskPreviewState extends State<TaskPreview> {
         )
       ),
       onTap: () {
-        Navigator.push(
+        final result = Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const TaskDetails()),
+          MaterialPageRoute(builder: (context) => TaskDetails(task: widget.task,)),
         );
+        result.then((value) => setState(() {
+          if(value != null){
+            setState(() {
+              widget.task.title = value.title;
+              widget.task.content = value.content;
+            });
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Task updated')));
+          }
+        }));
       },
     );
   }

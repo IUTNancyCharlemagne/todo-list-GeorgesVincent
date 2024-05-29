@@ -17,7 +17,7 @@ class _TaskFormState extends State<TaskForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Form'),),
+      appBar: AppBar(title: const Text('New Task'),),
       body: Form(
       key: _formKey,
       child: Column(
