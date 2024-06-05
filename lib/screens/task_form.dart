@@ -12,8 +12,6 @@ class TaskForm extends StatefulWidget {
 class _TaskFormState extends State<TaskForm> {
   final _formKey = GlobalKey<FormState>();
   final _task = Task(title: '', content: '', completed: false);
-  String title = '';
-  String description = '';
 
   @override
   Widget build(BuildContext context) {

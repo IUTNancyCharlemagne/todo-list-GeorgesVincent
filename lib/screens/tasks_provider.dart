@@ -23,7 +23,6 @@ class TasksProvider extends ChangeNotifier{
         content: element['content'] as String,
         completed: element['completed'] as bool
       ));
-      
     }
     _tasks = tasks;
   }

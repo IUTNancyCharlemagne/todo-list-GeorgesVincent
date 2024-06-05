@@ -13,7 +13,17 @@ class TasksMaster extends StatefulWidget {
 }
 
 class _TasksMasterState extends State<TasksMaster> {
-  TasksProvider taskProvider = TasksProvider();
+
+  @override
+  void initState(){
+    super.initState();
+    _init();
+  }
+
+  void _init() async{
+    TasksProvider  tasksProvider = TasksProvider();
+    await tasksProvider.fetchTasks();
+  }
 
   @override
   Widget build(BuildContext context) {
