@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_v1/screens/tasks_provider.dart';
 import './tasks_details.dart';
 import '../models/task.dart';
 
@@ -21,6 +22,7 @@ class _TaskPreviewState extends State<TaskPreview> {
         onChanged: (bool? value) {
           setState(() {
             widget.task.completed = value!;
+            TasksProvider().updateTask(widget.task);
           });
         },
         activeColor: Colors.green,
@@ -40,6 +42,7 @@ class _TaskPreviewState extends State<TaskPreview> {
               widget.task.title = value.title;
               widget.task.content = value.content;
             });
+            TasksProvider().updateTask(widget.task);
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Task updated')));
           }
         }));

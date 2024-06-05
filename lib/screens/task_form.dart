@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_v1/screens/tasks_provider.dart';
 import '../models/task.dart';
 
 class TaskForm extends StatefulWidget {
@@ -31,8 +32,12 @@ class _TaskFormState extends State<TaskForm> {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
               }
-              _task.title = value;
               return null;
+            },
+            onChanged: (value) {
+              setState(() {
+                _task.title = value;
+              });
             },
           ),
           TextFormField(
@@ -43,8 +48,12 @@ class _TaskFormState extends State<TaskForm> {
               if (value == null || value.isEmpty) {
                 return 'Please enter some text';
               }
-              _task.content = value;
               return null;
+            },
+            onChanged: (value) {
+              setState(() {
+                _task.content = value;
+              });
             },
           ),
           Padding(
@@ -55,10 +64,12 @@ class _TaskFormState extends State<TaskForm> {
                 // the form is invalid.
                 if (_formKey.currentState!.validate()) {
                   // Process data
+                  TasksProvider().addTask(_task);
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Task added')));
                   Navigator.pop(context, _task);
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Create a new task'),
             ),
           ),
         ],

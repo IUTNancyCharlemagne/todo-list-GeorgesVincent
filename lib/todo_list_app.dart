@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import './screens/tasks_provider.dart';
 import './screens/tasks_master.dart';
 
 class ToDoListApp extends StatefulWidget {
@@ -11,7 +13,9 @@ class ToDoListApp extends StatefulWidget {
 class _ToDoListAppState extends State<ToDoListApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(create: (context) => TasksProvider(),
+    child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
         appBar: AppBar(
@@ -21,6 +25,6 @@ class _ToDoListAppState extends State<ToDoListApp> {
           child: TasksMaster(),
         ),
       ),
-    );
+    ));
   }
 }

@@ -58,7 +58,7 @@ class _TaskDetailsState extends State<TaskDetails> {
                   Navigator.pop(context, widget.task);
                 }
               },
-              child: const Text('Submit'),
+              child: const Text('Update the task'),
             ),
           ),
         ],
