@@ -15,21 +15,18 @@ class TasksProvider extends ChangeNotifier{
   
   Future<void> fetchTasks() async{
     final response = await Supabase.instance.client.from('Task').select();
-    List<Task> tasks = [];
     for (var element in response) {
-      tasks.add(Task(
+      _tasks.add(Task(
         id: element['id'] as int,
         title: element['title'] as String,
         content: element['content'] as String,
         completed: element['completed'] as bool
       ));
-      
     }
-    _tasks = tasks;
   }
 
   Future<void> addTask(Task task) async{
-    final response = await Supabase.instance.client.from('Task').upsert({
+    await Supabase.instance.client.from('Task').insert({
       'title': task.title,
       'content': task.content,
       'completed': task.completed
@@ -39,7 +36,7 @@ class TasksProvider extends ChangeNotifier{
   }
 
   Future<void> updateTask(Task task) async{
-    final response = await Supabase.instance.client.from('Task').update({
+    await Supabase.instance.client.from('Task').update({
       'title': task.title,
       'content': task.content,
       'completed': task.completed
